@@ -8,7 +8,7 @@ What is the largest prime factor of the number 600851475143?
 '''
 
 def factorize(number, factors, primes):
-    if target in primes or factors[-1] >= sqrt(number):
+    if number in primes or factors[-1] >= sqrt(number):
         return True, number
 
     for n in range(max(factors[-1], 2), int(ceil(sqrt(number)))+1):
