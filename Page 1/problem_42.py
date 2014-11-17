@@ -13,3 +13,24 @@ Using words.txt (right click and 'Save Link/Target As...'), a 16K text file
 containing nearly two-thousand common English words, how many are triangle
 words?
 '''
+import numpy as np
+import string
+
+#Generate first 1000 triangle numbers
+fileName = 'p042_words.txt'
+wordFile = open(fileName, 'r')
+wordList = wordFile.readline().split(',')
+
+nTriWords = 0
+triNumbers = [0.5*n*(n+1) for n in range(1000)]
+letterScores = dict(zip(string.ascii_uppercase, range(1,27)))
+for word in wordList:
+    word = word.strip('"')
+    wordValue = 0
+    for letter in word:
+        wordValue += letterScores[letter]
+
+    if wordValue in triNumbers:
+        nTriWords += 1 
+
+print 'The number of triangle words in {0} is {1}'.format(fileName, nTriWords)
