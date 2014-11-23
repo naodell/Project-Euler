@@ -11,6 +11,11 @@ Find the pair of pentagonal numbers, P_j and P_k, for which their sum and
 difference are pentagonal and D = |P_k - P_j| is minimised; what is the value
 of D?
 '''
+import numpy as np
+
+def is_pentagonal(n)
+    coeff = np.array([1.5, -0.5, -1*n])
+    roots = np.
 
 pentNums = []
 isOptimized = False
@@ -22,10 +27,7 @@ while(not isOptimized):
         pentSum  = newPentNum + number
         pentDiff = abs(newPentNum - number)
      
-    
-
     pentNums.append(newPentNum)
     count += 1
     if count == 20: isOptimized = True
 
-print pentNums
