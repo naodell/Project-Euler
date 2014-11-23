@@ -12,52 +12,21 @@ difference are pentagonal and D = |P_k - P_j| is minimised; what is the value
 of D?
 '''
 import numpy as np
-
-def is_pentagonal(n)
-    coeff = np.array([1.5, -0.5, -1*n])
-    roots = np.
-
-import numpy as np
-
-def is_pentagonal(n):
-    coeff = np.array([3, -1, -2*n])
-    roots = np.roots(coeff)
-
-    if (roots[0] >= 0 and abs(roots[0] - round(roots[0])) < 1e-13) or (roots[1] >= 0 and abs(roots[1] - round(roots[1])) < 1e-13):
-        return True
-
-    return False
-        
-pentNums = []
+pentNums = [n*(3*n - 1)/2 for n in range(1,10000)]
 isOptimized = False
 count = 1
 minDiff = 1e9
-while(not isOptimized):
-    newPentNum = int(0.5*count*(3*count -1))
-
-    #print newPentNum, is_pentagonal(newPentNum)
-    for number in pentNums:
-        pentSum  = newPentNum + number
-        pentDiff = abs(newPentNum - number)
-<<<<<<< HEAD
-     
-=======
+for i,n in enumerate(pentNums):
+    for m in pentNums[:i]:
+        pentSum  = n + m
+        pentDiff = abs(n - m)
         
-        if pentDiff in pentNums and not is_pentagonal(pentDiff):
-            print pentDiff, pentNums.index(pentDiff)  
+        if pentSum > pentNums[-1]: break
 
-        #if is_pentagonal(pentSum) and is_pentagonal(pentDiff):
-        #    candidate = (newPentNum, number)  
-        #    if pentDiff < mindiff:
-        #        minDiff = pentDiff
+        if pentSum in pentNums and pentDiff in pentNums:
+            candidate = (n,m)  
+            if pentDiff < minDiff:
+                minDiff = pentDiff
+            print candidate
 
-        #    print candidate
-
->>>>>>> 57c46ecf9683743b9278a9c085b62fd0b58f6a10
-    pentNums.append(newPentNum)
-    count += 1
-
-<<<<<<< HEAD
-=======
-    if count == 1000: isOptimized = True
->>>>>>> 57c46ecf9683743b9278a9c085b62fd0b58f6a10
+print 'The value of D is {0}'.format(cadidate[0]-candidate[1])
