@@ -17,17 +17,47 @@ def is_pentagonal(n)
     coeff = np.array([1.5, -0.5, -1*n])
     roots = np.
 
+import numpy as np
+
+def is_pentagonal(n):
+    coeff = np.array([3, -1, -2*n])
+    roots = np.roots(coeff)
+
+    if (roots[0] >= 0 and abs(roots[0] - round(roots[0])) < 1e-13) or (roots[1] >= 0 and abs(roots[1] - round(roots[1])) < 1e-13):
+        return True
+
+    return False
+        
 pentNums = []
 isOptimized = False
 count = 1
+minDiff = 1e9
 while(not isOptimized):
     newPentNum = int(0.5*count*(3*count -1))
 
+    #print newPentNum, is_pentagonal(newPentNum)
     for number in pentNums:
         pentSum  = newPentNum + number
         pentDiff = abs(newPentNum - number)
+<<<<<<< HEAD
      
+=======
+        
+        if pentDiff in pentNums and not is_pentagonal(pentDiff):
+            print pentDiff, pentNums.index(pentDiff)  
+
+        #if is_pentagonal(pentSum) and is_pentagonal(pentDiff):
+        #    candidate = (newPentNum, number)  
+        #    if pentDiff < mindiff:
+        #        minDiff = pentDiff
+
+        #    print candidate
+
+>>>>>>> 57c46ecf9683743b9278a9c085b62fd0b58f6a10
     pentNums.append(newPentNum)
     count += 1
-    if count == 20: isOptimized = True
 
+<<<<<<< HEAD
+=======
+    if count == 1000: isOptimized = True
+>>>>>>> 57c46ecf9683743b9278a9c085b62fd0b58f6a10
